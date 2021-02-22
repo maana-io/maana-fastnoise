@@ -1,0 +1,17 @@
+{
+  algorithms
+  interpolations
+  fractalTypes
+  cellularDistanceFunctions
+  cellularReturnTypes
+  noise(
+    config: {
+      sizeX: 200
+      sizeY: 200
+      algorithm: "PerlinFractal"
+      interpolation: "Hermite"
+      fractalType: "Billow"
+      cellularDistanceFunction: "Manhattan"
+    }
+  )
+}

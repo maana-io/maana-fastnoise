@@ -1,0 +1,67 @@
+input Config {
+  sizeX: Int!
+  sizeY: Int!
+
+  # See for all noise types
+  # Default: 1337
+  seed: Float
+
+  # Noise algorithm to use
+  # Default: Simplex
+  algorithm: ID
+
+  # Frequency for all noise types
+  # Default: 0.01
+  frequency: Float
+
+  # Changes the interpolation method used to smooth between noise values
+  # Default: Quintic
+  interpolation: ID
+
+  # Sets octave count for all fractal noise types
+  # Default: 3
+  fractalOctaves: Int
+
+  # Sets octave lacunarity for all fractal noise types
+  # Default: 2.0
+  fractalLacunarity: Float
+
+  # Sets octave gain for all fractal noise types
+  # Default: 0.5
+  fractalGain: Float
+
+  # Sets method for combining octaves in all fractal noise types
+  # Default: FBM
+  fractalType: ID
+
+  # Sets distance function used in cellular noise calculations
+  # Default: Euclidean
+  cellularDistanceFunction: ID
+
+  # Sets the 2 distance indices used for distance2 return types
+  # Note: index0 should be lower than index1
+  # Both indices must be >= 0, index1 must be < 4
+  # Default: 0
+  cellularDistanceIndex0: Int
+
+  # Default: 1
+  cellularDistanceIndex1: Int
+
+  # Sets the maximum distance a cellular point can move from its grid position
+  # Setting this high will make artifacts more common
+  # Default: 0.45
+  cellularJitter: Float
+
+  # Sets the maximum warp distance from original location when using GradientPerturb{Fractal}(...)
+  # Default: 1.0
+  gradientPerturbAmp: Float
+}
+
+type Query {
+  algorithms: [ID!]!
+  interpolations: [ID!]!
+  fractalTypes: [ID!]!
+  cellularDistanceFunctions: [ID!]!
+  cellularReturnTypes: [ID!]!
+  noise(config: Config!): [Float!]!
+}
